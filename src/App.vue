@@ -1,18 +1,27 @@
 <template>
-    <div>
-        {{ message }}
+    <div id="root">
+        <TopBar></TopBar>
+        <LeftBar></LeftBar>
+        <Tree></Tree>
     </div>
 </template>
 
 <script>
 
+import TopBar from './components/TopBar.vue'
+import LeftBar from './components/LeftBar.vue'
+import Tree from './components/tree/Tree.vue'
 
-
-    export default {
-        data() {
-			return {
-				message: 'Hello Vue!'
-			  }
-		}
+export default {
+    data() {
+        return {
+            message: 'Hello Vue!'
+          }
+    },
+    components: {
+        TopBar,
+        LeftBar,
+        Tree,
     }
+}
 </script>
