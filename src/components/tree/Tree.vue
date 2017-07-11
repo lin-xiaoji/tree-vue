@@ -1,5 +1,5 @@
 <template>
-    <div id="tree" style="height: 12000px;">
+    <div id="tree" style="height: 1200px;">
         <div id="properties">
 
         </div>
@@ -7,9 +7,9 @@
             <Node :treeData="treeData"></Node>
         </div>
         <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" id="svg-box">
-            <g id="tree-root" transform="translate( 300 6000 )">
+            <g id="tree-root" transform="">
                 <g id="lines">
-                    <Line :treeData="treeData"></Line>
+                    <JoinLine :treeData="treeData"></JoinLine>
                 </g>
             </g>
         </svg>
@@ -20,7 +20,7 @@
 <script>
     import DetailBox from './DetailBox.vue'
     import Node from './Node.vue'
-    import Line from './Line.vue'
+    import JoinLine from './JoinLine.vue'
     var data = {
         "code": 1,
         "msg": "ok",
@@ -59,7 +59,7 @@
         components: {
             DetailBox,
             Node,
-            Line,
+            JoinLine,
         }
     }
 </script>
