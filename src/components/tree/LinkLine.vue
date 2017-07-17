@@ -27,7 +27,7 @@
             },
         },
         beforeCreate: function () {
-            this.$options.components.SubLine = require('./JoinLine.vue');
+            this.$options.components.SubLine = require('./LinkLine.vue');
         }
     }
 </script>

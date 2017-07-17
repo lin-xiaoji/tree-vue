@@ -1,5 +1,5 @@
 <template>
-    <div id="tree" style="height: 1200px;">
+    <div id="tree" :style="{height: '12000px',top : treeTop+'px',left: treeLeft + 'px'}" @mousedown="drag">
         <div id="properties">
 
         </div>
@@ -7,7 +7,7 @@
             <Node :treeData="treeData"></Node>
         </div>
         <svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg" id="svg-box">
-            <g id="tree-root" transform="">
+            <g id="tree-root" transform="translate( 300 6000 )">
                 <g id="lines">
                     <JoinLine :treeData="treeData"></JoinLine>
                 </g>
@@ -20,7 +20,7 @@
 <script>
     import DetailBox from './DetailBox.vue'
     import Node from './Node.vue'
-    import JoinLine from './JoinLine.vue'
+    import JoinLine from './LinkLine.vue'
     var data = {
         "code": 1,
         "msg": "ok",
@@ -32,11 +32,13 @@
     var treeData = JSON.parse(data.data.content);
 
 
-
-
-
     export default {
-
+        data() {
+            return {
+                treeTop: -(12000 - window.innerHeight)/2,
+                treeLeft: 0
+            }
+        },
         computed: {
             treeData() {
                 return this.$store.state.treeData;
@@ -50,6 +52,27 @@
 
                 //...
 
+            },
+            drag(e) {
+                if(e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') {
+                    return ;
+                }
+                var treeX = e.clientX - this.treeLeft;
+                var treeY = e.clientY - this.treeTop;
+
+                document.onmousemove = function(e) {
+                    var treeLeft = e.clientX - treeX;
+                    var treeTop = e.clientY - treeY;
+
+
+                    this.treeLeft = treeLeft + 'px';
+                    this.treeLeft = treeTop + 'px';
+
+                };
+                document.onmouseup = function(e) {
+                    this.onmousemove = null;
+                    this.onmouseup = null;
+                };
             }
         },
         created() {
