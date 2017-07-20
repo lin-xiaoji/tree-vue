@@ -1,8 +1,5 @@
 <template>
     <div id="tree" :style="{height: '12000px',top : treeTop+'px',left: treeLeft + 'px'}" onselectstart="return false;" @mousedown="drag">
-        <div id="properties">
-
-        </div>
         <div id="nodes">
             <Node :treeData="treeData"></Node>
         </div>
@@ -51,7 +48,11 @@
                 "height": null,
                 "posY": null,
                 "key": "key-82",
-                "property": []
+                "property": [
+                    {
+                        "name":'deee'
+                    }
+                ]
             },
             {
                 "id": "83",
@@ -74,7 +75,19 @@
                 "posY": null,
                 "key": "key-84",
                 "property": [],
-
+                'sub':[
+                    {
+                        "id": "85",
+                        "file_id": "4",
+                        "parent_id": "80",
+                        "name": "Cookie",
+                        "level": "1",
+                        "height": null,
+                        "posY": null,
+                        "key": "key-85",
+                        "property": []
+                    }
+                ]
             },
             {
                 "id": "85",
@@ -183,7 +196,6 @@
                 if(e.keyCode == 13 && e.shiftKey == true ) {
                     this.addSubNode();
                 }
-
             };
         },
         components: {

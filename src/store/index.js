@@ -6,7 +6,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         treeData:{},
-        currentNode:{}
+        currentNode:{},
+        showPropertyKey:''
     },
     mutations: {
         setTreeData(state,treeData) {
@@ -70,6 +71,9 @@ export default new Vuex.Store({
         },
         setCurrentNode(state,node) {
             state.currentNode = node;
+        },
+        setShowPropertyKey(state,key) {
+            state.showPropertyKey = key;
         }
     },
     modules: {

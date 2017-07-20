@@ -7,9 +7,16 @@
          @dblclick="editNode"
          ref="nodeName"
     >
-        <span v-if="onEdit"><input :value="treeData.name" :style="{width: inputWidth + 'px'}" @blur="cancelEditNode" ref="input" /></span>
-        <span v-if="!onEdit">{{treeData.name}}</span>
-        <img src="assets/img/property.gif">
+        <span v-show="onEdit"><input :value="treeData.name" :style="{width: inputWidth + 'px'}" @blur="cancelEditNode" ref="input" /></span>
+        <span v-show="!onEdit">{{treeData.name}}</span>
+        <img src="assets/img/property.gif" @click="toggleProperty">
+        <div class="property" v-show="propertyShow">
+            <ul>
+               <li v-for="item in treeData.property"><a><span class="img_1"></span>{{item.name}} </a></li>
+
+               <li data-tag="add"> <a class="add">添加属性</a> </li>
+            </ul>
+        </div>
     </div>
     <template v-if="treeData.sub">
         <SubNode v-for="(item,index) in treeData.sub" :treeData="item" :key="item.key"></SubNode>
@@ -33,6 +40,9 @@
                     node:true,
                     'current-node': (this.treeData == this.$store.state.currentNode)
                 }
+            },
+            propertyShow() {
+                return this.treeData.key == this.$store.state.showPropertyKey
             }
         },
         beforeCreate: function () {
@@ -52,6 +62,13 @@
                 currentNode.name = e.currentTarget.value;
                 let treeData = this.$store.state.treeData;
                 this.$store.commit('setTreeData',treeData);
+            },
+            toggleProperty() {
+                if (this.propertyShow) {
+                    this.$store.commit('setShowPropertyKey','');
+                } else  {
+                    this.$store.commit('setShowPropertyKey',this.treeData.key);
+                }
             }
         },
         updated() {
