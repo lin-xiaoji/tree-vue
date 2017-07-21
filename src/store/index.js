@@ -7,7 +7,11 @@ export default new Vuex.Store({
     state: {
         treeData:{},
         currentNode:{},
-        showPropertyKey:''
+        showPropertyKey:'',
+
+        detailIsShow:false,
+        detailIsEdit:false,
+        detailData:{},
     },
     mutations: {
         setTreeData(state,treeData) {
@@ -74,6 +78,19 @@ export default new Vuex.Store({
         },
         setShowPropertyKey(state,key) {
             state.showPropertyKey = key;
+        },
+
+        showDetail(state,data) {
+            state.detailIsShow = true;
+            state.detailData = data;
+        },
+
+        setDetailEdit(state,status) {
+            state.detailIsEdit = status;
+        },
+
+        setDetailShow(state,status) {
+            state.detailIsShow = status;
         }
     },
     modules: {

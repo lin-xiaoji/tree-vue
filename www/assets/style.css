@@ -203,7 +203,7 @@ img{ border:none}
 
 .baby_overlay_tmp {position: absolute;top:0; left:-5000px;display:block;visibility: hidden;width:640px;font-size:11px;}
 .baby_overlay_tmp .details {padding: 20px;}
-.baby_overlay {display:none;position:absolute;z-index:99;left:0; top:0;width:640px;color:#4e4f4f;font-size:12px;}
+.baby_overlay {position:absolute;z-index:99;left:0; top:0;width:640px;color:#4e4f4f;font-size:12px; opacity: 1;  padding-bottom: 0px;}
 .baby_overlay .content {width:100%; height:100px;overflow: hidden;box-shadow: 1px 1px 5px rgba(0,0,0,.3); background: #fff; border:1px solid #dbdbdb;}
 .baby_overlay .details {padding:0 20px 20px 20px;}
 .baby_overlay .close {background-image:url(img/close.png);position:absolute; right:15px; top:15px;cursor:pointer;height:13px;width:13px;}
@@ -211,7 +211,7 @@ img{ border:none}
 .baby_overlay_arrow.reverse {background-position:0 -40px;}
 .apiDetail{ padding-top:25px;}
 .biaoti{ width:100%; height:auto; margin:15px auto 5px auto; border-bottom:1px solid #d9dee1;}
-#property-edit, #property-preview{ float:right; margin-right:4px; border:1px solid #25b484; background:#29bd8b; font-size:12px; color:#fff; padding:2px 12px; border-radius:4px; cursor:pointer; margin-top:12px}
+.property-edit{ float:right; margin-right:4px; border:1px solid #25b484; background:#29bd8b; font-size:12px; color:#fff; padding:2px 12px; border-radius:4px; cursor:pointer; margin-top:12px}
 .input_z{ height:auto; margin:15px auto; line-height:24px; width:98%; padding:6px 3px; font-size:14px; color:#73767d; border:1px solid #c4c7c9; height:300px;}
 
 

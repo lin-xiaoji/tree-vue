@@ -7,7 +7,7 @@
 </template>
 
 <script>
-
+import Api from './utils/Api'
 import TopBar from './components/TopBar.vue'
 import LeftBar from './components/LeftBar.vue'
 import Tree from './components/tree/Tree.vue'
@@ -17,6 +17,9 @@ export default {
         return {
             message: 'Hello Vue!'
           }
+    },
+    mounted() {
+
     },
     components: {
         TopBar,

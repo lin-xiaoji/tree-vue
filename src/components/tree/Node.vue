@@ -1,7 +1,7 @@
 <template>
     <span>
     <div :class="nodeClass"
-         :style="{left: (treeData.level * 200) + translateX +'px', top: treeData.posY + translateY - 25 +'px'}"
+         :style="{left:left +'px', top: top +'px'}"
          :key="treeData.key"
          @click="selectNode"
          @dblclick="editNode"
@@ -10,13 +10,8 @@
         <span v-show="onEdit"><input :value="treeData.name" :style="{width: inputWidth + 'px'}" @blur="cancelEditNode" ref="input" /></span>
         <span v-show="!onEdit">{{treeData.name}}</span>
         <img src="assets/img/property.gif" @click="toggleProperty">
-        <div class="property" v-show="propertyShow">
-            <ul>
-               <li v-for="item in treeData.property"><a><span class="img_1"></span>{{item.name}} </a></li>
 
-               <li data-tag="add"> <a class="add">添加属性</a> </li>
-            </ul>
-        </div>
+        <Property :show="propertyShow" :property="treeData.property"></Property>
     </div>
     <template v-if="treeData.sub">
         <SubNode v-for="(item,index) in treeData.sub" :treeData="item" :key="item.key"></SubNode>
@@ -24,6 +19,7 @@
     </span>
 </template>
 <script>
+    import Property from './Property.vue'
     export default {
         props:['treeData'],
         data() {
@@ -43,6 +39,12 @@
             },
             propertyShow() {
                 return this.treeData.key == this.$store.state.showPropertyKey
+            },
+            left() {
+                return this.treeData.level * 200 + this.translateX
+            },
+            top() {
+                return this.treeData.posY + this.translateY - 25
             }
         },
         beforeCreate: function () {
@@ -76,6 +78,9 @@
                 this.$refs.input.focus();
                 this.$refs.input.select();
             }
+        },
+        components: {
+            Property
         }
     }
 </script>
