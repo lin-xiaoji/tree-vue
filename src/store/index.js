@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Api from '../utils/Api'
 import Vuex from 'vuex'
 Vue.use(Vuex);
 
@@ -91,6 +92,11 @@ export default new Vuex.Store({
 
         setDetailShow(state,status) {
             state.detailIsShow = status;
+        }
+    },
+    actions: {
+        getTreeData(context){
+            Api.get('');
         }
     },
     modules: {
