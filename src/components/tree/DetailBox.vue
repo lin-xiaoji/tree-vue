@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div id="overlayDivArrow" class="baby_overlay_arrow" style="top:160px;"></div>
+        <div id="overlayDivArrow" class="baby_overlay_arrow" :style="{top: arrowTop + 'px'}"></div>
     </div>
 </template>
 <script>
@@ -30,8 +30,9 @@
     export default {
         data() {
             return {
-                top:6000,
-                left:545
+                top:0,
+                left:0,
+                arrowTop:0
             }
         },
         computed: {
@@ -53,8 +54,8 @@
                 this.$store.commit('setDetailEdit',false);
                 let treeData = this.$parent.treeData;
                 this.$store.commit('setTreeData',treeData);
-                Api.post('file/save',{content:treeData},function () {
-
+                Api.post('files/saveProperty',this.detailData,function (data) {
+                    this.detailData.id = data.id
                 })
             },
             close() {
@@ -65,16 +66,19 @@
             this.$watch('detailData', (val, oldVal) => {
                 let currentNode = this.$store.state.currentNode;
 
-                this.top = 6000 - 200 + currentNode.posY + this.detailData.index * 36;
+                let toTop = currentNode.posY + this.detailData.index * 36 - 250 + window.innerHeight/2; //相对屏幕的顶部距离
+                //不超出屏幕最顶和最底部
+                if(toTop < 0) toTop = 0;
+                if((toTop + 500) > window.innerHeight) toTop = window.innerHeight - 500;
+
+                let treeTop = this.$root.$children[0].$children[2].treeTop;//整个树的顶部相对位置
+                let offsetTop = 6000 + treeTop - window.innerHeight/2; //拖动的距离
+
+                this.top = toTop - treeTop;
+
                 this.left = currentNode.level * 200 + 540;
 
-                let treeTop = this.$root.$children[0].$children[2].treeTop;
-                let offsetTop = 6000 + treeTop - window.innerHeight/2;
-                console.log(offsetTop);
-
-                let toTop = 0; //相对屏幕的顶部距离
-
-
+                this.arrowTop = parseInt(currentNode.posY) + (this.detailData.index * 36) + window.innerHeight/2 + 36 - toTop + offsetTop;
             })
         }
     }

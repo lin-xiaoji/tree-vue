@@ -18,95 +18,7 @@
     import DetailBox from './DetailBox.vue'
     import Node from './Node.vue'
     import JoinLine from './LinkLine.vue'
-    var data = {
-        "id": "80",
-        "file_id": "4",
-        "parent_id": "0",
-        "name": "本地存储",
-        "level": "0",
-        "height": "0",
-        "posY": "0",
-        "key": "key-80",
-        "sub": [
-            {
-                "id": "81",
-                "file_id": "4",
-                "parent_id": "80",
-                "name": "indexedDB",
-                "level": "1",
-                "height": null,
-                "posY": null,
-                "key": "key-81",
-                "property": []
-            },
-            {
-                "id": "82",
-                "file_id": "4",
-                "parent_id": "80",
-                "name": "sessionStorage",
-                "level": "1",
-                "height": null,
-                "posY": null,
-                "key": "key-82",
-                "property": [
-                    {
-                        'key':'property-124',
-                        "name":'deee',
-                        "content":'content111',
-                    }
-                ]
-            },
-            {
-                "id": "83",
-                "file_id": "4",
-                "parent_id": "80",
-                "name": "localStorage",
-                "level": "1",
-                "height": null,
-                "posY": null,
-                "key": "key-83",
-                "property": []
-            },
-            {
-                "id": "84",
-                "file_id": "4",
-                "parent_id": "80",
-                "name": "webSQL",
-                "level": "1",
-                "height": null,
-                "posY": null,
-                "key": "key-84",
-                "property": [],
-                'sub':[
-                    {
-                        "id": "85",
-                        "file_id": "4",
-                        "parent_id": "80",
-                        "name": "Cookie",
-                        "level": "1",
-                        "height": null,
-                        "posY": null,
-                        "key": "key-85",
-                        "property": []
-                    }
-                ]
-            },
-            {
-                "id": "85",
-                "file_id": "4",
-                "parent_id": "80",
-                "name": "Cookie",
-                "level": "1",
-                "height": null,
-                "posY": null,
-                "key": "key-85",
-                "property": []
-            }
-        ],
-        "property": []
-    };
-    //var treeData = JSON.parse(data.data.content);
-    var treeData = data;
+
 
     export default {
         data() {
@@ -182,8 +94,8 @@
             }
         },
         created() {
-            this.$store.commit('setTreeData',treeData);
-            this.$store.commit('setCurrentNode',treeData);
+            //this.$store.commit('setTreeData',treeData);
+            //this.$store.commit('setCurrentNode',treeData);
         },
         mounted() {
             window.onkeyup = (e)=> {

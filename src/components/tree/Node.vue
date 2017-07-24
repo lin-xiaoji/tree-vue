@@ -11,7 +11,7 @@
         <span v-show="!onEdit">{{treeData.name}}</span>
         <img src="assets/img/property.gif" @click="toggleProperty">
 
-        <Property :show="propertyShow" :property="treeData.property"></Property>
+        <Property :show="propertyShow" :property="treeData.property" :nodeId="treeData.id"></Property>
     </div>
     <template v-if="treeData.sub">
         <SubNode v-for="(item,index) in treeData.sub" :treeData="item" :key="item.key"></SubNode>

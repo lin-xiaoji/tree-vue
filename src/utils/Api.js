@@ -1,5 +1,5 @@
 import reqwest from 'reqwest'
-
+import Cookie from './Cookie'
 
 
 const baseUrl = 'http://tree.lin-xiaoji.com/api/';
@@ -31,13 +31,12 @@ const Api = {
                     var data = JSON.parse(ret);
                 } catch (e) {
                     alert('json error:'+ret);
-                    iView.Message.error('数据格式错误，数据内容：'+ret);
                     return false;
                 }
-                if(data.code == 200){
+                if(data.code == 1){
                     callback(data.data);
                 } else {
-                    iView.Message.error(data.msg);
+                    alert(data.msg);
                 }
             }
         });

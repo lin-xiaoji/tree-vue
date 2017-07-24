@@ -9,7 +9,7 @@
 </template>
 <script>
     export default {
-        props:['property','show'],
+        props:['property','show','nodeId'],
         data() {
             return {
                 propertyArr: this.property
@@ -23,6 +23,7 @@
             },
             addProperty() {
                 this.propertyArr.push({
+                    node_id:this.nodeId,
                     name:'',
                     content:''
                 });

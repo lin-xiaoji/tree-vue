@@ -96,7 +96,11 @@ export default new Vuex.Store({
     },
     actions: {
         getTreeData(context){
-            Api.get('');
+            Api.get('files/read', {id:4}, function (data) {
+                let treeData = JSON.parse(data.content);
+                context.commit('setTreeData',treeData);
+                context.commit('setCurrentNode',treeData);
+            });
         }
     },
     modules: {

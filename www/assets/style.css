@@ -95,7 +95,7 @@ img{ border:none}
 	left: 0px;
 	position: fixed;
 	top: 0px;
-	z-index: 99;
+	z-index: 100;
 	box-shadow: rgba(200, 200, 200, 0.14902) 0px 3px 2px -2px;
 	background: #393f4f;
 	border-bottom: 1px solid rgb(229, 229, 229); color:#fff; text-align:center
@@ -117,7 +117,7 @@ img{ border:none}
     position: absolute;
     height:100%;
     background-color: #f8f8f8;
-	z-index: 99; color:#fff
+	z-index: 100; color:#fff
 }
 .file-list ul li {
      height: 50px;
@@ -208,6 +208,13 @@ img{ border:none}
 .baby_overlay .details {padding:0 20px 20px 20px;}
 .baby_overlay .close {background-image:url(img/close.png);position:absolute; right:15px; top:15px;cursor:pointer;height:13px;width:13px;}
 .baby_overlay_arrow {background-image:url(img/overlay_arrow.png);background-position:0 0;position:absolute;height:45px;width:40px;left: -39px;}
+
+.baby_overlay,.baby_overlay_arrow {
+    transition: top .5s,left .5s;
+    -moz-transition: top .5s,left .5s;	/* Firefox 4 */
+    -webkit-transition: top .5s,left .5s;	/* Safari 和 Chrome */
+    -o-transition: top .5s,left .5s;
+}
 .baby_overlay_arrow.reverse {background-position:0 -40px;}
 .apiDetail{ padding-top:25px;}
 .biaoti{ width:100%; height:auto; margin:15px auto 5px auto; border-bottom:1px solid #d9dee1;}
