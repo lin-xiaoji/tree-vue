@@ -6,6 +6,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        currentFileId:1,
+        fileList:[],
         treeData:{},
         currentNode:{},
         showPropertyKey:'',
@@ -77,29 +79,42 @@ export default new Vuex.Store({
         setCurrentNode(state,node) {
             state.currentNode = node;
         },
+
+        //属性相关
         setShowPropertyKey(state,key) {
             state.showPropertyKey = key;
         },
-
         showDetail(state,data) {
             state.detailIsShow = true;
             state.detailData = data;
         },
-
         setDetailEdit(state,status) {
             state.detailIsEdit = status;
         },
-
         setDetailShow(state,status) {
             state.detailIsShow = status;
-        }
+        },
+
+        //文件相关
+        setFileList(state,data) {
+            state.fileList = data;
+        },
+        setCurrentFileId(state,id) {
+            state.currentFileId = id;
+        },
+
     },
     actions: {
         getTreeData(context){
-            Api.get('files/read', {id:4}, function (data) {
+            Api.get('files/read', {id:context.state.currentFileId}, function (data) {
                 let treeData = JSON.parse(data.content);
                 context.commit('setTreeData',treeData);
                 context.commit('setCurrentNode',treeData);
+            });
+        },
+        getFileList(context) {
+            Api.get('files/index', {}, function (data) {
+                context.commit('setFileList',data.files);
             });
         }
     },

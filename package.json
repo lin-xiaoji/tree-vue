@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "iview": "^2.0.0-rc.19",
     "reqwest": "^2.0.5",
     "vue": "^2.3.2",
     "vuex": "^2.3.1"

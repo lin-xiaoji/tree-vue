@@ -1,5 +1,5 @@
 <template>
-    <div id="root">
+    <div id="root" :style="{height:height + 'px'}">
         <TopBar></TopBar>
         <LeftBar></LeftBar>
         <Tree></Tree>
@@ -15,11 +15,16 @@ import Tree from './components/tree/Tree.vue'
 export default {
     data() {
         return {
-            message: 'Hello Vue!'
+            height: window.innerHeight
           }
     },
     mounted() {
         this.$store.dispatch('getTreeData');
+        let that = this;
+        window.onresize = function () {
+            that.height = window.innerHeight;
+        };
+
     },
     components: {
         TopBar,

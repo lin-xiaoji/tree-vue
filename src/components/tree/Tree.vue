@@ -111,6 +111,16 @@
                     this.addSubNode();
                 }
             };
+
+            let that = this;
+            document.onmousewheel = function (e) {
+                let delta = e.deltaY;
+                if (delta > 0) {
+                    that.treeTop = that.treeTop - 30;
+                } else if (delta < 0) {
+                    that.treeTop = that.treeTop + 30;
+                }
+            }
         },
         components: {
             DetailBox,
