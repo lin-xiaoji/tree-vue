@@ -5,6 +5,7 @@ import iView from 'iview';
 
 Vue.use(iView);
 
+console.log(Vue);
 
 new Vue({
     el: '#app',

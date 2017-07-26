@@ -12,20 +12,22 @@
         >
             <Form ref="formInline" >
                 <Form-item prop="username">
-                    <Input type="text" placeholder="请输入文档名称"/>
+                    <Input type="text" v-model="fileName" placeholder="请输入文档名称"/>
                 </Form-item>
                 <Form-item>
-                    <Button type="primary" @click="handleSubmit('formInline')" long>添加</Button>
+                    <Button type="primary" @click="addFile" long>添加</Button>
                 </Form-item>
             </Form>
         </Modal>
     </div>
 </template>
 <script>
+    import Api from '../utils/Api'
     export default {
         data() {
             return {
-                modal:false
+                modal:false,
+                fileName:''
             }
         },
         computed: {
@@ -42,7 +44,9 @@
                 this.$store.dispatch('getTreeData');
             },
             addFile() {
-
+                Api.post('files/add',{fileName:this.fileName},  (data) => {
+                    this.$store.commit('addFile', data);
+                })
             }
         },
         mounted() {

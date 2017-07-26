@@ -132,7 +132,7 @@ img{ border:none}
 	position: absolute;
 	padding-top:5px;
 	padding-bottom:5px;
-	min-width: 200px;
+	min-width: 220px;
 	z-index: 10;
 	font-size: 12px;
 	line-height: 30px;
@@ -153,9 +153,9 @@ img{ border:none}
 .property ul li a{ color:#63666d; width:100%; height:36px; display:block; cursor:pointer}
 .property ul li a:hover{ width:100%; height:36px; display:block; background:#e5e9ed}
 .property ul li a .img_1, .property ul li a .img_2, .property ul li a .img_3{ width:14px; height:14px; display:inline-block; margin-left:10px; margin-right:3px; vertical-align:middle}
-.property ul li a .img_1{ background:url(img/img_01.png) 0 0 no-repeat}
-.property ul li a .img_2{ background:url(img/img_01.png) 0 -28px no-repeat}
-.property ul li a .img_3{ background:url(img/img_01.png) 0 -59px no-repeat}
+.property ul li a .img_1{ background:url(../img/img_01.png) 0 0 no-repeat}
+.property ul li a .img_2{ background:url(../img/img_01.png) 0 -28px no-repeat}
+.property ul li a .img_3{ background:url(../img/img_01.png) 0 -59px no-repeat}
 .property ul li .add{ text-indent:27px;}
 
 
@@ -176,8 +176,8 @@ img{ border:none}
 .baby_overlay {position:absolute;z-index:99;left:0; top:0;width:640px;color:#4e4f4f;font-size:12px; opacity: 1;  padding-bottom: 0px;}
 .baby_overlay .content {width:100%; height:100px;overflow: hidden;box-shadow: 1px 1px 5px rgba(0,0,0,.3); background: #fff; border:1px solid #dbdbdb;}
 .baby_overlay .details {padding:0 20px 20px 20px;}
-.baby_overlay .close {background-image:url(img/close.png);position:absolute; right:15px; top:15px;cursor:pointer;height:13px;width:13px;}
-.baby_overlay_arrow {background-image:url(img/overlay_arrow.png);background-position:0 0;position:absolute;height:45px;width:40px;left: -39px;}
+.baby_overlay .close {background-image:url(../img/close.png);position:absolute; right:15px; top:15px;cursor:pointer;height:13px;width:13px;}
+.baby_overlay_arrow {background-image:url(../img/overlay_arrow.png);background-position:0 0;position:absolute;height:45px;width:40px;left: -39px;}
 
 .baby_overlay,.baby_overlay_arrow {
     transition: top .5s,left .5s;

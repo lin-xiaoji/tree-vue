@@ -8,7 +8,7 @@
                         <div class="property-edit" @click="toggleEdit">编辑</div>
                         <h2>{{detailData.name}}</h2>
                     </div>
-                    <div class="desc">{{detailData.content}}</div>
+                    <div class="desc" v-html="detailHtml"></div>
                 </div>
                 <div class="apiDetail" v-show="detailIsEdit">
                     <div class="biaoti">
@@ -27,6 +27,7 @@
 </template>
 <script>
     import Api from '../../utils/Api'
+    import showdown from 'showdown'
     export default {
         data() {
             return {
@@ -44,6 +45,10 @@
             },
             detailData() {
                 return this.$store.state.detailData;
+            },
+            detailHtml() {
+                let converter = new showdown.Converter();
+                return converter.makeHtml(this.detailData.content);
             }
         },
         methods: {

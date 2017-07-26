@@ -1,7 +1,7 @@
 <template>
     <div class="property" v-show="show">
         <ul>
-            <li v-for="(item,index) in propertyArr" @click="showDetail(index)"><a><span class="img_1"></span>{{item.name}} </a></li>
+            <li v-for="(item,index) in propertyArr" :class="{active:index == currentIndex}" @click="showDetail(index)"><a><span class="img_1"></span>{{item.name}} </a></li>
 
             <li @click="addProperty"> <a class="add">添加属性</a> </li>
         </ul>
@@ -12,7 +12,8 @@
         props:['property','show','nodeId'],
         data() {
             return {
-                propertyArr: this.property
+                propertyArr: this.property,
+                currentIndex: -1
             }
         },
         methods: {
@@ -20,6 +21,7 @@
                 let detailData = this.propertyArr[index];
                 detailData.index = index;
                 this.$store.commit('showDetail',this.propertyArr[index]);
+                this.currentIndex = index;
             },
             addProperty() {
                 this.propertyArr.push({

@@ -54,8 +54,7 @@
                 currentNode.parent.sub.splice(index,0,newObject);
                 this.$store.commit('setCurrentNode',newObject);
 
-                let treeData = this.treeData;
-                this.$store.commit('setTreeData',treeData);
+                this.$store.commit('setTreeData',this.treeData);
             },
             //添加子节点
             addSubNode() {
@@ -71,8 +70,7 @@
                 currentNode.sub.push(newObject);
                 this.$store.commit('setCurrentNode',newObject);
 
-                let treeData = this.treeData;
-                this.$store.commit('setTreeData',treeData);
+                this.$store.commit('setTreeData',this.treeData);
             },
 
             //拖拽
@@ -102,13 +100,19 @@
                 if(e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') {
                     return ;
                 }
-                //添加子节点 enter
+                //添加兄弟子节点 enter
                 if(e.keyCode == 13 && e.shiftKey == false ) {
                     this.addNode();
                 }
-
+                //添加子节点 shift + enter
                 if(e.keyCode == 13 && e.shiftKey == true ) {
                     this.addSubNode();
+                }
+
+                //删除节点 delete
+                if(e.keyCode == 46) {
+                    this.$store.commit('delNode');
+                    this.$store.commit('setTreeData',this.treeData);
                 }
             };
 

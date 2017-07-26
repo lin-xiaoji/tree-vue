@@ -6,6 +6,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
+        username:'',
+
         currentFileId:1,
         fileList:[],
         treeData:{},
@@ -17,6 +19,10 @@ export default new Vuex.Store({
         detailData:{},
     },
     mutations: {
+        setUsername(state, username) {
+            state.username = username;
+        },
+
         setTreeData(state,treeData) {
 
             function countNodePos(treeData) {
@@ -79,6 +85,19 @@ export default new Vuex.Store({
         setCurrentNode(state,node) {
             state.currentNode = node;
         },
+        delNode(state) {
+            var arr = state.currentNode.parent.sub;
+            for(var i=0; i < arr.length; i++) {
+                if(arr[i] == state.currentNode) {
+                    arr.splice(i,1);
+                    break;
+                }
+            }
+            if(i == 0) i = 1;
+            let currentNode = arr[i-1];
+            if(!currentNode) currentNode = state.currentNode.parent;
+            state.currentNode = currentNode;
+        },
 
         //属性相关
         setShowPropertyKey(state,key) {
@@ -99,6 +118,9 @@ export default new Vuex.Store({
         setFileList(state,data) {
             state.fileList = data;
         },
+        addFile(state,data) {
+            state.fileList.push(data);
+        },
         setCurrentFileId(state,id) {
             state.currentFileId = id;
         },
@@ -115,6 +137,7 @@ export default new Vuex.Store({
         getFileList(context) {
             Api.get('files/index', {}, function (data) {
                 context.commit('setFileList',data.files);
+                context.commit('setUsername',data.username);
             });
         }
     },

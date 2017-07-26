@@ -9,7 +9,7 @@
     >
         <span v-show="onEdit"><input :value="treeData.name" :style="{width: inputWidth + 'px'}" @blur="cancelEditNode" ref="input" /></span>
         <span v-show="!onEdit">{{treeData.name}}</span>
-        <img src="assets/img/property.gif" @click="toggleProperty">
+        <img src="assets/img/property.gif" class="showProperty" @click="toggleProperty">
 
         <Property :show="propertyShow" :property="treeData.property" :nodeId="treeData.id"></Property>
     </div>
@@ -68,6 +68,7 @@
             toggleProperty() {
                 if (this.propertyShow) {
                     this.$store.commit('setShowPropertyKey','');
+                    this.$store.commit('setDetailShow',false);
                 } else  {
                     this.$store.commit('setShowPropertyKey',this.treeData.key);
                 }

@@ -44,9 +44,10 @@
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
                     if(valid) {
-                        Api.post('login/reg',this.$data.formInline, () =>{
+                        Api.post('login/reg',this.$data.formInline, (data) =>{
                             this.$parent.$parent.regModal = false;
                             this.$Message.success('注册成功');
+                            this.$store.commit('setUsername',data);
                         });
                     }
                 });

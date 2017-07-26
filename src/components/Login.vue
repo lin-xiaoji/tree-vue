@@ -37,9 +37,10 @@
             handleSubmit(name) {
                 this.$refs[name].validate((valid) => {
                     if(valid) {
-                        Api.post('login',this.$data.formInline, () =>{
+                        Api.post('login',this.$data.formInline, (data) =>{
                             this.$parent.$parent.loginModal = false;
                             this.$Message.success('登陆成功');
+                            this.$store.commit('setUsername',data);
                         });
                     }
                 });

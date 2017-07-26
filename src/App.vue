@@ -1,5 +1,5 @@
 <template>
-    <div id="root" :style="{height:height + 'px'}">
+    <div id="root" :style="{height:height + 'px'}" @click="closeProperty">
         <TopBar></TopBar>
         <LeftBar></LeftBar>
         <Tree></Tree>
@@ -24,7 +24,15 @@ export default {
         window.onresize = function () {
             that.height = window.innerHeight;
         };
-
+    },
+    methods: {
+        //关闭所有属性列表
+        closeProperty(e) {
+            if(e.target.id == 'svg-box') {
+                this.$store.commit('setShowPropertyKey','');
+                this.$store.commit('setDetailShow',false);
+            }
+        }
     },
     components: {
         TopBar,

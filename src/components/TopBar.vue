@@ -5,15 +5,17 @@
         </a>
 
         <!--登录之前-->
+        <span v-if="!username">
         <a id="btn-login" class="header-item tc fl ml_10" @click="loginModal = true" >
              登录
         </a>
         <a id="btn-reg" class="header-item tc fl " @click="RegModal = true">
              注册
          </a>
+         </span>
         <!--登录之后-->
-        <div class="login">
-            <Icon type="android-person" size="18"></Icon> <span class="font_14 account">account</span>
+        <div class="login" v-if="username">
+            <Icon type="android-person" size="18"></Icon> <span class="font_14 account">{{username}}</span>
         </div>
 
         <span class="tc font_16" v-if="!fileName">加载中...</span>
@@ -53,6 +55,9 @@
         computed: {
             fileName() {
                 return this.$store.state.treeData.name
+            },
+            username() {
+                return this.$store.state.username
             }
         },
         methods: {
@@ -74,7 +79,7 @@
 
                 let id = this.$store.state.currentFileId;
                 Api.post('files/save',{id:id,content:content},function(data){
-                    alert('保存成功');
+                    this.$Message.success('保存成功');
                 });
             }
         },
