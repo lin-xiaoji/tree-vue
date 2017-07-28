@@ -214,7 +214,8 @@ button {vertical-align:middle;border:0 none;background: transparent no-repeat 0 
 .apiDetail h4 b{width: 150px;display:inline-block;}
 .apiDetail h4 span{width: 230px;display:inline-block;}
 
-.apiDetail pre, .apiDetail .desc {margin: 10px auto;padding: 10px;display: block; word-break:break-all; line-height:24px; color:#63666d}
+.apiDetail pre, .apiDetail .desc {margin: 10px auto;padding: 10px;display: block; word-break:break-all; line-height:24px; color:#63666d;}
+.apiDetail .desc {height:360px; overflow-y: auto}
 .apiDetail pre {word-wrap: break-word;}
 .apiDetail p{margin-left: 5px;padding:0;}
 .apiDetail .longdesc {margin-top: 5px;}

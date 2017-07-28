@@ -1,5 +1,5 @@
 <template>
-    <div id="tree" :style="{height: '12000px',top : treeTop+'px',left: treeLeft + 'px'}" onselectstart="return false;" @mousedown="drag">
+    <div id="tree" :style="{height: '12000px',top : treeTop+'px',left: treeLeft + 'px'}" @mousewheel="wheel" onselectstart="return false;" @mousedown="drag">
         <div id="nodes">
             <Node :treeData="treeData"></Node>
         </div>
@@ -89,6 +89,17 @@
                     this.onmousemove = null;
                     this.onmouseup = null;
                 };
+            },
+            wheel(e) {
+                if(e.target.id != 'svg-box') {
+                    return false;
+                }
+                let delta = e.deltaY;
+                if (delta > 0) {
+                    this.treeTop = this.treeTop - 30;
+                } else if (delta < 0) {
+                    this.treeTop = this.treeTop + 30;
+                }
             }
         },
         created() {
@@ -116,15 +127,6 @@
                 }
             };
 
-            let that = this;
-            document.onmousewheel = function (e) {
-                let delta = e.deltaY;
-                if (delta > 0) {
-                    that.treeTop = that.treeTop - 30;
-                } else if (delta < 0) {
-                    that.treeTop = that.treeTop + 30;
-                }
-            }
         },
         components: {
             DetailBox,

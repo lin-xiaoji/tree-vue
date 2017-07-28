@@ -59,7 +59,7 @@
                 this.$store.commit('setDetailEdit',false);
                 let treeData = this.$parent.treeData;
                 this.$store.commit('setTreeData',treeData);
-                Api.post('files/saveProperty',this.detailData,function (data) {
+                Api.post('files/saveProperty',this.detailData, (data) => {
                     this.detailData.id = data.id
                 })
             },

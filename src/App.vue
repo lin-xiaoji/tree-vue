@@ -19,11 +19,14 @@ export default {
           }
     },
     mounted() {
+        var fileId = location.hash.substr(1);
+        if(!fileId) fileId = 1;
+        this.$store.commit('setCurrentFileId',fileId);
         this.$store.dispatch('getTreeData');
-        let that = this;
-        window.onresize = function () {
-            that.height = window.innerHeight;
-        };
+//        let that = this;
+//        window.onresize = function () {
+//            that.height = window.innerHeight;
+//        };
     },
     methods: {
         //关闭所有属性列表

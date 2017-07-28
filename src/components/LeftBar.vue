@@ -40,6 +40,7 @@
         },
         methods: {
             showFile(id) {
+                window.location.hash = '#' + id;
                 this.$store.commit('setCurrentFileId',id);
                 this.$store.dispatch('getTreeData');
             },

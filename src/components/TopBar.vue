@@ -54,6 +54,7 @@
         },
         computed: {
             fileName() {
+                document.title = this.$store.state.treeData.name + ' 知识树';
                 return this.$store.state.treeData.name
             },
             username() {
@@ -78,7 +79,7 @@
                 this.$store.commit('setTreeData',treeData); //还原数据，
 
                 let id = this.$store.state.currentFileId;
-                Api.post('files/save',{id:id,content:content},function(data){
+                Api.post('files/save',{id:id,content:content},()=>{
                     this.$Message.success('保存成功');
                 });
             }
